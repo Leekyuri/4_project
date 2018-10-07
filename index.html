@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>알약</title>
+	<style type="text/css">
+		body {background-color: #F0AC9E; overflow: hidden;}
+
+		#pill {width: 50px; position: absolute; 
+				animation: drop 1s ease infinite;}
+				
+			@keyframes drop{
+				from{ margin-top: 0; }
+				to{margin-top: 800px;}
+			}
+		#pill2 {width: 45px; position: absolute;
+				animation: drop2 1s ease infinite;}
+
+			@keyframes drop2{
+				from{margin-top: 0;}
+				to{margin-top: 800px;}
+			}
+
+		#box {width: 280px; position: absolute; top: 50%; left:50%; transform: translate(-50%,-50%);}
+		#bot {width: 50px; position: absolute; top: 450px; left: 640px; }
+		#hi2 {width: 100px; position: absolute; top: 400px; left: 585px; opacity: 0; transition:all ease 0.2s;}
+		#iv {width: 70px; position: absolute; top: 550px; left: 710px;}
+		#ouch {width: 100px; position: absolute; top: 580px; left: 650px; opacity: 0; transition:all ease 0.2s;}
+
+		#die {width: 1px; position: absolute; top: 50%; left:50%; transform: translate(-50%,-50%); opacity: 0; transition:all ease 1s;}
+
+
+		.aaa {cursor: pointer;}
+
+	</style>
+</head>
+<body>
+	<img id="pill" src="pill.png">
+	<img id="pill2" src="pill2.png">
+	<img id="box" class="aaa" onclick="c()" src="box.png">
+	<img id="bot" class="aaa" onclick="a()" src="bottle.png">
+	<audio id="hi">
+			<source src="hi.mpeg" type="audio/mpeg">
+		</audio>
+	<img id="hi2" src="hi.png">
+	<img id="iv" class="aaa" onclick="b()" src="iv.png">
+	<img id="ouch" src="ouch.png">
+	<audio id="ouch2">
+			<source src="ouch.mpeg" type="audio/mpeg">
+		</audio>
+	<video id="die" src="die.mp4" type="video/mp4";></video>
+
+	<script type="text/javascript">
+		var total = 0;
+		for(var i=0;i<25;i++){
+
+			var j = document.getElementById("pill");
+			var newpill = j.cloneNode(true);
+			newpill.style.left = Math.random()*window.innerWidth + "px";
+			newpill.style.top = Math.random()*window.innerHeight + "px";
+			newpill.style.animationDuration = Math.random()*5+5+"s";
+			document.body.appendChild(newpill);
+			}
+
+			var z = document.getElementById("pill");
+			z.style.display = "none";
+
+			var total = 0;
+		for(var i=0;i<25;i++){
+
+			var j = document.getElementById("pill2");
+			var newpill2 = j.cloneNode(true);
+			newpill2.style.left = Math.random()*window.innerWidth + "px";
+			newpill2.style.top = Math.random()*window.innerHeight + "px";
+			newpill2.style.animationDuration = Math.random()*5+5+"s";
+			document.body.appendChild(newpill2);
+			}
+
+			var z = document.getElementById("pill2");
+			z.style.display = "none";
+
+			
+			var i = 0;
+			var o = 0;
+			var g = 0;
+			function a(){
+					i++;
+					if(i%2==1){
+						hi.play();
+						hi2.style.opacity=1;
+					}else if(i%2==0){
+						hi.pause();
+						hi2.style.opacity=0;
+					}
+			}
+
+			function b(){
+					o++;
+					if(o%2==1){
+						ouch2.play();
+						ouch.style.opacity=1;
+					}else if(o%2==0){
+						ouch2.pause();
+						ouch.style.opacity=0;
+					}
+			}
+
+			function c(){
+					g++;
+					if(g%2==1){
+						
+						die.setAttribute("src","die.mp4")
+						die.style.opacity=1;
+						die.style.width="500px";
+						die.play();
+					
+					}else if(g%2==0){
+						
+						die.style.opacity=0;
+						die.currentTime=0;
+						die.style.width="1px";
+						die.pause();
+					}
+			}
+
+	</script>
+</body>
+</html>
